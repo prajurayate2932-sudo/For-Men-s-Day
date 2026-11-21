@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Men's Day, Chirag ❤️</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #190d20, #54253f, #a65b70);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  text-align: center;
+  padding: 25px 12px;
+}
+
+.container { width: 100%; max-width: 520px; }
+
+h1 {
+  font-size: 2rem;
+  color: #ffe0e9;
+  text-shadow: 0 0 15px #ff9fbd;
+}
+
+.subtitle { color: #f8c9d7; }
+
+.envelope-area {
+  height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 900px;
+  margin: 15px 0;
+}
+
+.envelope {
+  position: relative;
+  width: 280px;
+  height: 175px;
+  background: #eaa6b8;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 15px 35px #12071099;
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #d9829d;
+  clip-path: polygon(0 0, 50% 58%, 100% 0);
+  z-index: 4;
+  transform-origin: top;
+  transition: transform 1s;
+}
+
+.envelope:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #f3bdca;
+  clip-path: polygon(0 100%, 50% 48%, 100% 100%);
+  z-index: 3;
+}
+
+.letter {
+  position: absolute;
+  width: 90%;
+  height: 145px;
+  background: #fff7f0;
+  color: #71364e;
+  left: 5%;
+  top: 12px;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 25px;
+  transition: transform 1s, z-index 1s;
+  z-index: 2;
+}
+
+.heart-seal {
+  position: absolute;
+  z-index: 5;
+  top: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 35px;
+  transition: opacity .4s;
+}
+
+.envelope.open:before {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope.open .heart-seal { opacity: 0; }
+
+.envelope.open .letter {
+  transform: translateY(-125px);
+  z-index: 6;
+}
+
+.hint {
+  color: #ffe0e9;
+  font-size: 14px;
+}
+
+.message {
+  display: none;
+  background: #fff4f0;
+  color: #65344a;
+  border-radius: 18px;
+  padding: 25px;
+  line-height: 1.8;
+  box-shadow: 0 10px 30px #18091488;
+  animation: appear 1.2s ease;
+}
+
+.message h2 { color: #a33e67; }
+
+.signature {
+  font-size: 21px;
+  color: #b3426c;
+  font-weight: bold;
+}
+
+button {
+  background: #f5b5c9;
+  color: #54253f;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  animation: floatUp 5s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <h1>Happy Men's Day ❤️</h1>
+  <p class="subtitle">A little surprise for my favourite man...</p>
+
+  <div class="envelope-area">
+    <div class="envelope" id="envelope" onclick="openLetter()">
+      <div class="letter">A little letter<br>for you 💌</div>
+      <div class="heart-seal">❤️</div>
+    </div>
+  </div>
+
+  <p class="hint" id="hint">Tap the envelope to open your surprise ✨</p>
+
+  <div class="message" id="message">
+    <h2>To My Favourite Man, Chirag ❤️</h2>
+
+    <p>
+      Happy International Men's Day! 🥰
+    </p>
+
+    <p>
+      Today is a little reminder that you are special.
+      I appreciate your presence, your efforts, your smile,
+      and all those little things that make you YOU.
+    </p>
+
+    <p>
+      I hope life gives you countless reasons to smile,
+      courage to chase your dreams, strength during difficult
+      days and happiness in every little moment.
+    </p>
+
+    <p>
+      Never stop believing in yourself.
+      You deserve love, respect, success and all the beautiful
+      things life has to offer.
+    </p>
+
+    <p>
+      Thank you for being my MAN and not some boy i need to teach !
+      Thank you for being a special part of my life.
+      Keep smiling and keep shining! ❤️
+    </p>
+
+    <p class="signature">
+      With lots of love,<br>
+      Yours, Karlyachi Bhaji 💗
+    </p>
+
+    <h2>You're one of a kind! 🌹</h2>
+    <button onclick="showHearts()">Love me as you can ❤️</button>
+  </div>
+
+</div>
+
+<script>
+let opened = false;
+
+function openLetter() {
+  if (opened) return;
+  opened = true;
+
+  document.getElementById("envelope").classList.add("open");
+  document.getElementById("hint").textContent =
+    "Your special message is here... ❤️";
+
+  setTimeout(() => {
+    document.getElementById("message").style.display = "block";
+    document.getElementById("hint").style.display = "none";
+    showHearts();
+  }, 1100);
+}
+
+function showHearts() {
+  const symbols = ["❤️", "💕", "💗", "🌹", "✨"];
+
+  for (let i = 0; i < 35; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (18 + Math.random() * 22) + "px";
+    heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+  }
+}
+</script>
+</body>
+</html>
